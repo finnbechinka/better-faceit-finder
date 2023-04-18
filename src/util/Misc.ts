@@ -60,6 +60,7 @@ async function getPlayerInfos(
 
       const leetify = await API.getLeetifyData(ps.steam64);
       if (leetify) {
+        player.steamPfpLink = leetify.steamAvatarUrl;
         player.faceitName = leetify.faceitNickname;
         player.ranks = leetify.ranks;
         for (let ban of leetify.platformBans) {

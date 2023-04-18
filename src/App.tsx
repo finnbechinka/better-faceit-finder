@@ -39,6 +39,7 @@ function App() {
               {playerInfos?.map((player, index) => {
                 return (
                   <div className="card">
+                    {player.steamPfpLink ? <img src={player.steamPfpLink} /> : <></>}
                     <p>
                       steam name:{" "}
                       <a href={`https://steamcommunity.com/profiles/${player.steamId64}`}>

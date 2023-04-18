@@ -6,6 +6,7 @@ type Player = {
   faceitName?: string;
   faceitElo?: number;
   faceitMatches?: number;
+  steamPfpLink?: string;
 };
 
 export default Player;
