@@ -53,13 +53,14 @@ async function getPlayerInfos(
     for (let ps of parsedStatus) {
       let player: Player = {
         steamName: ps.name,
-        steamId64: ps.steam64,
-        bans: { matchmaking: false, faceit: false, esportal: false },
+        steamId64: ps.steam64.toString(),
+        bans: {},
         ranks: {},
       };
 
       const leetify = await API.getLeetifyData(ps.steam64);
       if (leetify) {
+        player.faceitName = leetify.faceitNickname;
         player.ranks = leetify.ranks;
         for (let ban of leetify.platformBans) {
           switch (ban) {
@@ -78,7 +79,6 @@ async function getPlayerInfos(
 
       const faceit = await API.getFaceitData(ps.steam64);
       if (faceit) {
-        console.log(faceit);
         player.bans.faceit = faceit.banned;
         player.faceitName = faceit.faceitNickname;
         player.faceitElo = faceit.faceitElo;
