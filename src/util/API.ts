@@ -19,8 +19,9 @@ type FaceitData = {
 };
 
 async function getLeetifyData(steam64: bigint): Promise<LeetifyData | null> {
-  const leetify_access_token = import.meta.env.VITE_LEETIFY_API_KEY;
-  const lvid = import.meta.env.VITE_LEETIFY_LVID;
+  const leetify_access_token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkMjI2ZjA4Ny1mNjZjLTQ4M2MtYTMyMi1lMzE4NjEzMzVlMjMiLCJpYXQiOjE2NjE5OTIyMDZ9.N118a-3ZGb5nkgVo1ibgbbc2Sv1mHlJfc9D70nuX1_I";
+  const lvid = "d0b5ac8b05023e0cd278ec0c43a83ef2";
 
   const leetify_post_options = {
     method: "POST",
@@ -109,7 +110,7 @@ async function getLeetifyData(steam64: bigint): Promise<LeetifyData | null> {
 }
 
 async function getFaceitData(steam64: bigint): Promise<FaceitData | null> {
-  const faceit_api_key = import.meta.env.VITE_FACEIT_API_KEY;
+  const faceit_api_key = "ca9f320f-f342-45d5-bd0d-ca925dd1f6ee";
   const res = await fetch(
     `https://open.faceit.com/data/v4/players?game=csgo&game_player_id=${steam64}`,
     {
