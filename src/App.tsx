@@ -15,6 +15,9 @@ function App() {
 
   async function lookup(e: React.SyntheticEvent): Promise<void> {
     e.preventDefault();
+    if (fetching) {
+      return;
+    }
     setFetching(true);
     const target = e.target as typeof e.target & {
       status: { value: string };
@@ -26,16 +29,16 @@ function App() {
 
   return (
     <div className="App">
-      <main>
-        <div className="mainContainer">
-          <form onSubmit={lookup}>
-            <textarea className="statusInput" name="status" defaultValue={""}></textarea>
-            <input className="statusSubmit" type="submit" value="Find" />
-          </form>
+      <div className="mainContent">
+        <form onSubmit={lookup}>
+          <textarea className="statusInput" name="status" defaultValue={testInput}></textarea>
+          <input className="statusSubmit" type="submit" value="Find" />
+        </form>
+        <div className="cardContainer">
           {fetching ? (
             <Spinner />
           ) : (
-            <div className="cardContainer">
+            <>
               {playerInfos?.map((player, index) => {
                 return (
                   <div className="card">
@@ -96,10 +99,10 @@ function App() {
                   </div>
                 );
               })}
-            </div>
+            </>
           )}
         </div>
-      </main>
+      </div>
     </div>
   );
 }
