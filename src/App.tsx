@@ -31,7 +31,7 @@ function App() {
     <div className="App">
       <div className="mainContent">
         <form onSubmit={lookup}>
-          <textarea className="statusInput" name="status" defaultValue={testInput}></textarea>
+          <textarea className="statusInput" name="status" defaultValue={""}></textarea>
           <input className="statusSubmit" type="submit" value="Find" />
         </form>
         <div className="cardContainer">
